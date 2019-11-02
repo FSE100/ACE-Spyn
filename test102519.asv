@@ -44,7 +44,8 @@ while pathfinding
                 end
         end
                 
-    elseif brick.TouchPressed(2)
+    elseif touchRead == 1
+    brick.TouchPressed(2)
                 disp(brick.TouchPressed(2));
                 %hit a wall in front
                 brick.MoveMotor('CB' -50);
