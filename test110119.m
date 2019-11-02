@@ -18,8 +18,6 @@ while pathfinding
     disp('Touch = ' + touchRead);
     colorRead = brick.ColorCode(1);
     disp('Color = ' + colorRead);
-    
-    if colorRead == 2
         %brick.ColorCode(1) ~= 7 %if it's not normal
         disp(brick.ColorCode(1));
         switch brick.ColorCode(1)
@@ -44,27 +42,26 @@ while pathfinding
                 end
         end
                 
-    elseif brick.TouchPressed(2)
+    if brick.TouchPressed(2)
                 disp(brick.TouchPressed(2));
                 %hit a wall in front
                 brick.MoveMotor('CB', -50);
                 pause(1);
                 brick.MoveMotor('B', 100);
-                brick.MoveMotor('C', 50);
+                brick.MoveMotor('C', 70);
                 pause(1);
                 
                 elseif brick.UltrasonicDist(4) > 8 || brick.UltrasonicDist(4) < 1
                 disp(ultrasonicRead);
                 %lost the wall, start turning
                 brick.MoveMotor('C', 100);
-                brick.MoveMotor('B', 50);
+                brick.MoveMotor('B', 70);
                 pause(.2);
-                if brick.UltrasonicDist(4) > 8 || brick.UltrasonicDist(4) < 1
+                if brick.UltrasonicDist(4) > 6 || brick.UltrasonicDist(4) < 1
                     brick.MoveMotor('C', 100);
-                    brick.MoveMotor('B', 50);
+                    brick.MoveMotor('B', 70);
                     pause(1);
                 end
     end
     brick.MoveMotor('BC', 100);
-    brick.StopMotor('BC');
 end
