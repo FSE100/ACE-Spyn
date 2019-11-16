@@ -1,8 +1,6 @@
 global key
 InitKeyboard();
 
-brick.SetColorMode(1, 2);
-
 while 1
     pause(0);
     reading = brick.TouchPressed(2);
@@ -33,19 +31,10 @@ while 1
         case 'downarrow' %back
             brick.MoveMotor('BC', -100);
             brick.StopMotor('BC');
-        case 'a'
-            brick.MoveMotorAngleRel('D', 20, -15, 'Coast');
-            brick.WaitForMotor('D');
-        case 's'
-        	brick.MoveMotorAngleRel('D', 20, 15, 'Coast');
-            brick.WaitForMotor('D');
-        case 'p'
-            CloseKeyboard();
-            test_11_15_19;
-            return;
-        case 'l'
-        	disp("Color = " + brick.ColorCode(1));
-            disp("Touching = " + brick.TouchPressed(2));
-            disp("Ultrasonic = "+ brick.UltrasonicDist(4));
+        case 0 %err
+            disp('No key being pressed');
+        case 'q' %end
+            break;
     end
 end
+CloseKeyboard();

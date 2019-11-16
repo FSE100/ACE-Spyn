@@ -155,7 +155,7 @@ while pathfinding
                 disp("UR" + ultrasonicRead);
                 %lost the wall, start turning
                 brick.MoveMotor('C', 100);
-                brick.MoveMotor('B', 0);
+                brick.MoveMotor('B', 10);
                 pause(.2);
 %     if brick.UltrasonicDist(4) > 6 || brick.UltrasonicDist(4) < 1
 %                 brick.MoveMotor('C', 100);
