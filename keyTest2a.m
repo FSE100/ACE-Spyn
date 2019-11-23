@@ -41,7 +41,7 @@ while 1
             brick.WaitForMotor('D');
         case 'p'
             CloseKeyboard();
-            test_11_22_19;
+            test_11_15_19;
             return;
         case 'l'
         	disp("Color = " + brick.ColorCode(1));

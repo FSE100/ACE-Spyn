@@ -19,7 +19,7 @@ while pathfinding
     touchRead = brick.TouchPressed(2);
     touchRead2 = brick.TouchPressed(3);
     colorRead = brick.ColorCode(1);
-        %brick.ColorCode(1) ~= 7 %if it's not normal
+        %brick.ColorCode(1) ~= 7 if it's not normal
         disp(brick.ColorCode(1));
         switch brick.ColorCode(1)
             case 5
@@ -27,21 +27,27 @@ while pathfinding
                 brick.StopMotor('CB', "Coast");
                 pause(5);
                 brick.MoveMotor('BC', 100);
-                test_11_15_19;
+                test_11_22_19;
             case 3
                 %pickup
                 if passenger == 0
                     passenger = 1;
                     brick.StopMotor('CB', "Coast");
-                    keyTest2a;
+                    keyTest2;
                 end
                 break;
-            case 4
+            case 2
                 %dropoff
                 if passenger == 1
                     passenger = 0;
                     brick.StopMotor('CB', "Coast");
-                    keyTest2a;
+                    brick.MoveMotorAngleRel('D', 20, 15, 'Coast');
+                    brick.WaitForMotor('D');
+                    brick.MoveMotor('BC', 90);
+                    brick.StopMotor('BC');
+                    pause(0.5);
+                    brick.StopMotor('CB', "Coast");
+                    keyTest2;
                 %else
                     %begin tracking movements OR ignore
                     %if time permits
@@ -67,11 +73,11 @@ while pathfinding
                 %maybe stop
                 %rel angle??
                 pause(.8);
-%     if brick.UltrasonicDist(4) > 6 || brick.UltrasonicDist(4) < 1
-%                 brick.MoveMotor('C', 100);
-%                 brick.MoveMotor('B', 70);
-%                 pause(1);
-%     
+     %if brick.UltrasonicDist(4) > 6 || brick.UltrasonicDist(4) < 1
+      %           brick.MoveMotor('C', 100);
+       %          brick.MoveMotor('B', 70);
+        %         pause(1);
+     
     end
        
     brick.MoveMotor('BC', 90);
