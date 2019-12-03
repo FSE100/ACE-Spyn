@@ -13,13 +13,13 @@ rightMotor = 'B';
 brick.SetColorMode(1, 2);
 
 while pathfinding
-    pause(0.1);
+    pause(0);
     ultrasonicRead = brick.UltrasonicDist(4);
     disp('Ultrasonic = ' + ultrasonicRead);
     touchRead = brick.TouchPressed(2);
     touchRead2 = brick.TouchPressed(3);
     colorRead = brick.ColorCode(1);
-        %brick.ColorCode(1) ~= 7 if it's not normal
+        %brick.ColorCode(1) ~= 7 %if it's not normal
         disp(brick.ColorCode(1));
         switch brick.ColorCode(1)
             case 5
@@ -33,21 +33,15 @@ while pathfinding
                 if passenger == 0
                     passenger = 1;
                     brick.StopMotor('CB', "Coast");
-                    keyTest2;
+                    keyTest2a;
                 end
                 break;
-            case 2
+            case 4
                 %dropoff
                 if passenger == 1
                     passenger = 0;
                     brick.StopMotor('CB', "Coast");
-                    brick.MoveMotorAngleRel('D', 20, 15, 'Coast');
-                    brick.WaitForMotor('D');
-                    brick.MoveMotor('BC', 90);
-                    brick.StopMotor('BC');
-                    pause(0.5);
-                    brick.StopMotor('CB', "Coast");
-                    keyTest2;
+                    keyTest2a;
                 %else
                     %begin tracking movements OR ignore
                     %if time permits
@@ -60,24 +54,23 @@ while pathfinding
                 disp(brick.TouchPressed(2));
                 %hit a wall in front
                 brick.MoveMotor('BC', -55);
-                pause(1);
-                brick.MoveMotor('B', 55);
-                brick.MoveMotor('C', 0);
-                pause(.5);
+                pause(.7);
+                brick.MoveMotor('B', 12);
+                pause(.9);
                 
     elseif brick.UltrasonicDist(4) > 15 || brick.UltrasonicDist(4) < 1
                 disp("UR" + ultrasonicRead);
                 %lost the wall, start turning
                 brick.MoveMotor('C', 90);
-                brick.MoveMotor('B', 0);
+                brick.MoveMotor('B', -10);
                 %maybe stop
                 %rel angle??
-                pause(.8);
-     %if brick.UltrasonicDist(4) > 6 || brick.UltrasonicDist(4) < 1
-      %           brick.MoveMotor('C', 100);
-       %          brick.MoveMotor('B', 70);
-        %         pause(1);
-     
+                pause(.4);
+%     if brick.UltrasonicDist(4) > 6 || brick.UltrasonicDist(4) < 1
+%                 brick.MoveMotor('C', 100);
+%                 brick.MoveMotor('B', 70);
+%                 pause(1);
+%     
     end
        
     brick.MoveMotor('BC', 90);
