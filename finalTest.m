@@ -27,13 +27,13 @@ while pathfinding
                 brick.StopMotor('CB', "Coast");
                 pause(5);
                 brick.MoveMotor('BC', 100);
-                test_11_22_19;
+                finalTest;
             case 3
                 %pickup
                 if passenger == 0
                     passenger = 1;
                     brick.StopMotor('CB', "Coast");
-                    keyTest2a;
+                    finalTest;
                 end
                 break;
             case 4
@@ -41,7 +41,7 @@ while pathfinding
                 if passenger == 1
                     passenger = 0;
                     brick.StopMotor('CB', "Coast");
-                    keyTest2a;
+                    remoteFinal;
                 %else
                     %begin tracking movements OR ignore
                     %if time permits
