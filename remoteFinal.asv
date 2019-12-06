@@ -2,7 +2,9 @@
 global key
 InitKeyboard();
 
-% Remote while loop
+%
+brick.SetColorMode(1, 2);
+
 while 1
     pause(0);
     reading = brick.TouchPressed(2);
@@ -41,8 +43,11 @@ while 1
             brick.WaitForMotor('D');
         case 'p' %Exiting Remote and calling finalTest (car) class
             CloseKeyboard();
-            %Call to the finalTest (car) function
             finalTest;
             return;
+        case 'l' %For testing of the sensors after battery change
+        	disp("Color = " + brick.ColorCode(1));
+            disp("Touching = " + brick.TouchPressed(2));
+            disp("Ultrasonic = "+ brick.UltrasonicDist(4));
     end
 end

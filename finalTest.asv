@@ -61,7 +61,6 @@ while pathfinding
     if brick.TouchPressed(2) || brick.TouchPressed(3)
                 %display to command window for proofchecking
                 disp(brick.TouchPressed(2));
-                %Moving car due to touching wall on front
                 %scoot the car back a bit
                 brick.MoveMotor('BC', -55);
                 pause(.6);
@@ -72,16 +71,14 @@ while pathfinding
     %Sensing if Ultrasonic sensor out of range and turning 90 deg right
     elseif brick.UltrasonicDist(4) > 18 || brick.UltrasonicDist(4) < 1
                 disp("UR" + ultrasonicRead);
-                %Moving car since wall lost (out of range)
-                %Via both motor commands, turning to right
+                %lost the wall, start turning
                 brick.MoveMotor('C', 90);
                 brick.MoveMotor('B', -10);
+                %maybe stop
+                %rel angle??
                 pause(.4);
     end
-    
-    %If everything else regular (wood color or white) + in range
-    %Move forward
+       
     brick.MoveMotor('BC', 90);
-    %End of pathfinding while loop; goes back up to Pathfinding start
     disp("End of WL");
 end
